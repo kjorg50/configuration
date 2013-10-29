@@ -1,0 +1,9 @@
+[user]
+	name = Kyle Jorgensen
+	email = kylewjorgensen@gmail.com
+	
+[alias]
+	co = checkout
+	cm = commit
+	st = status
+	b = branch
