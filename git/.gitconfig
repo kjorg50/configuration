@@ -7,3 +7,7 @@
 	cm = commit
 	st = status
 	b = branch
+
+[color]
+    ui = true
+
