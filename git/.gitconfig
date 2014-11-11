@@ -1,12 +1,14 @@
 [user]
-	name = Kyle Jorgensen
-	email = kylewjorgensen@gmail.com
-	
+  name = Kyle Jorgensen
+  email = kylewjorgensen@gmail.com
+  
 [alias]
-	co = checkout
-	cm = commit
-	st = status
-	b = branch
+  co = checkout
+  cm = commit
+  st = status
+  b = branch -v
+  d = diff
+  ds = diff --staged
 
 [color]
     ui = true
