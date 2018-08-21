@@ -1,0 +1,20 @@
+[user]
+    name = Kyle Jorgensen
+[alias]
+    wdreview = "!f() { if [ -z $1 ]; then echo \"Usage: git review <branch> <topic>\"; else if [ -z $2 ]; then git push origin HEAD:refs/for/$1; else git push origin HEAD:refs/for/$1/$2 ; fi; fi; }; f"
+    sync = "!f() { echo \"Syncing $1 with master\" && git pull --rebase origin master; }; f"
+    draft = "!f() { if [ -z $1 ]; then echo \"Usage: git draft <branch> <topic>\"; else if [ -z $2 ]; then git push origin HEAD:refs/drafts/$1; else git push origin HEAD:refs/drafts/$1/$2 ; fi; fi; }; f"
+    co = checkout
+    cm = commit
+    st = status
+    b = branch -v
+    d = diff
+    ds = diff --staged
+    logwd = log --graph --pretty=format:‘%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset’ --abbrev-commit --date=relative
+
+[color]
+    ui = true
+[branch]
+        autosetuprebase = always
+[init]
+        templatedir = /Users/kyle.jorgensen/.git_templates
