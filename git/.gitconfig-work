@@ -1,5 +1,6 @@
 [user]
     name = Kyle Jorgensen
+    email = kyle.jorgensen@workday.com
 [alias]
     wdreview = "!f() { if [ -z $1 ]; then echo \"Usage: git review <branch> <topic>\"; else if [ -z $2 ]; then git push origin HEAD:refs/for/$1; else git push origin HEAD:refs/for/$1/$2 ; fi; fi; }; f"
     sync = "!f() { echo \"Syncing $1 with master\" && git pull --rebase origin master; }; f"
