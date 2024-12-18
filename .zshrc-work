@@ -93,7 +93,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zshconfig="subl ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias k="kubectl --kubeconfig=/Users/kyle.jorgensen/k8s/kubeconfig"
+# alias k="kubectl --kubeconfig=/Users/kyle.jorgensen/k8s/kubeconfig"
+alias k="kubectl"
+alias ks4="export KUBECONFIG=$HOME/.kube/kube-config-s0004"
 
 # Set groovy home
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
@@ -108,11 +110,10 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/bin"
 
 # Add GOHOME and GOROOT, and add to PATH
-export GOPATH="${HOME}/dev/go"
-export GOHOME=$GOPATH
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-export GO111MODULE=on
+#export GOPATH="${HOME}/dev/go"
+#export GOHOME=$GOPATH
+#export GOROOT="$(brew --prefix golang)/libexec"
+#export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 #pyenv 
 eval "$(pyenv init -)"
@@ -146,4 +147,36 @@ klogs() {
   done
 }
 
+# aliases for kubectl for SPCs
+alias kc4='kubectl --kubeconfig=$HOME/.kube/kube-config-s0004'
+alias kc3='kubectl --kubeconfig=$HOME/.kube/kube-config-s0003'
+alias kc14='kubectl --kubeconfig=$HOME/.kube/kube-config-s0014'
+alias kc15='kubectl --kubeconfig=$HOME/.kube/kube-config-s0015'
+
+# aliases to connect to SPCs
+alias spc14='spc connect fedstg s0014 -p 9414 --developer-access -u $(whoami) -r malt-role -k $HOME/.kube/kube-config-s0014'
+alias spc15='spc connect eng s0015 -p 9415 --developer-access -u $(whoami) -r malt-role -k $HOME/.kube/kube-config-s0015'
+alias spc4='spc connect eng s0004 -p 9444 --developer-access -u $(whoami) -r malt-role -k $HOME/.kube/kube-config-s0004'
+alias spc3='spc connect eng s0003 -p 9443 --developer-access -u $(whoami) -r malt-role -k $HOME/.kube/kube-config-s0003'
+
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# kotlinr alias
+export PATH=$PATH:/usr/local/bin/kotlin
+function kotlinr() {
+  echo Compiling, please wait...
+  kotlinc $1 -include-runtime -d out.jar
+  java -jar out.jar
+}
+
+# jenv
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
